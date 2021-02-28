@@ -1,35 +1,28 @@
-
-const connection = require("./connection");
-
+// require dependencies
+const connection = require("./connection.js");
+// this creates the orm object that holds the functions that query the mysql database
 const orm = {
-  selectAll: (tableInput, cb) => {
-    const queryString = "SELECT * FROM ??";
-    connection.query(queryString, [tableInput], (err, result) => {
-      if (err) throw err;
-      console.log('r');
-      return cb(result);
-    })
-  },
-
-  
-  insertOne: (tableInput, newVal, cb) => {
-    const queryString = `INSERT INTO ${tableInput} SET ?`;
-    connection.query(queryString, newVal, (err) => {
-      if (err) throw err;
-      console.log('c');
-      return cb();
-    })
-  }
-/*
-  updateOne: (tableInput, id, updateVal, cb) => {
-    const queryString = ``;
-
-    connection.query(queryString, updateVal, (err, result) => {
-      if (err) throw err;
-      console.log('u');
-      return cb(result);
-    });
-  } */
-};
+    selectAll: (tableInput, cb) => {
+        const queryString = "SELECT * FROM ??";
+        connection.query(queryString, [tableInput], (err, result) => {
+            if (err) throw err;
+            cb(result);
+        })
+    },
+    insertOne: (tableInput, colName, newVal, cb) => {
+        const queryString = "INSERT INTO ?? (??) VALUES (?)";
+        connection.query(queryString, [tableInput, colName, newVal], (err, result) => {
+            if (err) throw err;
+            cb(result)
+        })
+    },
+    updateOne: (tableInput, colName, newVal, colName2, identifier, cb) => {
+        const queryString = "UPDATE ?? SET ??=? WHERE ??=?";
+        connection.query(queryString, [tableInput, colName, newVal, colName2, identifier], (err, result) => {
+            if (err) throw err;
+            cb(result);
+        });
+    }
+}
 
 module.exports = orm;

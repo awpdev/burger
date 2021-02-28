@@ -1,19 +1,44 @@
 <main class="container">
   <div class="row">
     <div class="col-12 text-center">
-      <img src="./assets/img/—Pngtree—yellow bread sandwich burger_4543060.png" alt="burger">
+      <img src="../../public/assets/images/—Pngtree—yellow bread sandwich burger_4543060.png" alt="burger">
       <h1>Eat Da Burger!</h1>
     </div>
   </div>
   <div class="row">
-    <div class="col-6">
+    <div class="col-md-6" id="current-burgers">
+      <ul>
+        <h2> Current Burgers: </h2>
+        <br>
+        {{#each burgers}}
+        {{#unless devoured}}
+
+        <form class="form-inline" action="/api/burger/devoured" method="post">
+          <h5> {{burger_name}} </h5>
+          <button id="index-button" type:"submit" name="devoured" class="btn btn-light btn-sm" value="{{id}}">Devour it!</button>
+        </form>
+
+        {{/unless}}
+        {{/each}}
+      </ul>
 
     </div>
-    <div class="col-6">
+    <div class="col-6" id="devoured-burgers">
+      <ul>
+        <h2> Devoured Burgers: </h2>
+        <br>
+        {{#each burgers}}
+        {{#if devoured}}
+
+        <h5> {{burger_name}} </h5>
+
+        {{/if}}
+        {{/each}}
+      </ul>
 
     </div>
   </div>
-  <div class="row">
+  <div class="row" id="new-burger">
     <div class="col-12 text-center">
       <br>
       
