@@ -2,10 +2,10 @@ const orm = require("../config/orm");
 
 const burger = {
   addBurger: (burgerName, cb) => {
-    orm.insertOne('burger', { burger_name: burgerName }, cb);
+    orm.insertOne('burgers', { burger_name: burgerName }, cb);
   },
   getAll: cb => {
-    orm.selectAll('burger', cb);
+    orm.selectAll('burgers', cb);
   } /*
   devourBurger: (burgerId, cb) => {
     orm.updateOne('burger', burgerId, { devoured: true }, cb);
