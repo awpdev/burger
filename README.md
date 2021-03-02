@@ -12,9 +12,11 @@ This is a burger app where the user can enter a burger they want to eat, then cl
 
 [Here](https://drive.google.com/file/d/1_XfQdQL7wJ7_vENecy6_ELn1pFCh2p7q/view) is a video demonstration of the app.
 
-![]
+![burgerapp](/public/assets/images/burgerapp.gif)
 
-## Installation
 
-## Usage
+## Credits
+Burger icon from pngtree.com
+
+Trilogy Education Services example code
 
