@@ -1,6 +1,6 @@
-// require dependencies
+require('dotenv').config();
 const mysql = require("mysql");
-// create connection variable 
+
 let connection;
 if (process.env.JAWSDB_URL) {
     connection = mysql.createConnection(process.env.JAWSDB_URL);
@@ -13,7 +13,7 @@ if (process.env.JAWSDB_URL) {
         database: "burgers_db"
     });
 };
-// create the connection with mysql
+
 connection.connect(err => {
     if (err) {
         console.error("error connecting: " + err.stack);
